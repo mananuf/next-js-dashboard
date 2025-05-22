@@ -35,6 +35,7 @@ export const routes = createRoutes({
         customers: {
             path: "/dashboard/customers",
             list: "/dashboard/customers",
+            create: "/dashboard/customers/create",
             // view: (id: string | number) => `/dashboard/customers/${id}`,
         },
     },
