@@ -93,7 +93,6 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
     // Prepare data for insertion into the database
     const { customerId, amount, status } = validatedFields.data;
     const amountInCents = amount * 100;
-    const date = new Date().toISOString().split('T')[0];
 
     try {
         await sql`
@@ -103,6 +102,8 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
       `;
     } catch (error) {
         // If a database error occurs, return a more specific error.
+        console.log(error);
+
         return {
             message: 'Database Error: Failed to Update Invoice.',
         };
