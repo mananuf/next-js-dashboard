@@ -104,7 +104,7 @@ export async function updateUser(id: string, prevState: UserState, formData: For
 
     let hashedPassword;
 
-    if(currentUser.password == password) {
+    if(currentUser[0].password == password) {
        hashedPassword = password;
     } else {
         hashedPassword = await bcryptjs.hash(password, 10);
