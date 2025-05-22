@@ -1,4 +1,5 @@
 import { Revenue } from './definitions';
+import {RouteParams, withQuery} from "@/app/lib/routes";
 
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString('en-US', {
@@ -66,4 +67,23 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     '...',
     totalPages,
   ];
+};
+
+// Utility function for type-safe navigation
+export const buildRoute = <T extends RouteParams>(
+    path: string,
+    params?: T,
+    query?: RouteParams
+) => {
+  let finalPath = path;
+
+  // Replace dynamic params
+  if (params) {
+    Object.entries(params).forEach(([key, value]) => {
+      finalPath = finalPath.replace(`:${key}`, value.toString());
+    });
+  }
+
+  // Add query params
+  return withQuery(finalPath, query);
 };
