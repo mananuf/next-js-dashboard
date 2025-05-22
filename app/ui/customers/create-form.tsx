@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
 import {useActionState} from "react";
-import {createCustomer, CustomerState} from "@/app/lib/customer-actions";
+import {createCustomer, CustomerState} from "@/app/lib/actions/customer-actions";
 import {routes} from "@/app/lib/routes";
 
 export default function CreateCustomerForm() {

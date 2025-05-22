@@ -65,6 +65,13 @@ export type CustomersTableType = {
   total_paid: number;
 };
 
+export type UsersTableType = {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+};
+
 export type FormattedCustomersTable = {
   id: string;
   name: string;
@@ -85,4 +92,16 @@ export type InvoiceForm = {
   customer_id: string;
   amount: number;
   status: 'pending' | 'paid';
+};
+
+export type UserField = {
+  id: string;
+  email: string;
+};
+
+export type UserForm = {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
 };

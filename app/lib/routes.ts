@@ -38,6 +38,13 @@ export const routes = createRoutes({
             create: "/dashboard/customers/create",
             // view: (id: string | number) => `/dashboard/customers/${id}`,
         },
+        users: {
+            path: "/dashboard/users",
+            list: "/dashboard/users",
+            create: "/dashboard/users/create",
+            edit: (id: string | number) => `/dashboard/users/edit/${id}`,
+            // view: (id: string | number) => `/dashboard/customers/${id}`,
+        },
     },
     auth: {
         login: "/login",
