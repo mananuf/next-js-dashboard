@@ -82,7 +82,6 @@ export default function EditUserForm({user}: { user: UserForm; }) {
                                 id="password"
                                 name="password"
                                 type="password"
-                                defaultValue={user.password}
                                 aria-describedby="password-error"
                                 placeholder="Enter password"
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"

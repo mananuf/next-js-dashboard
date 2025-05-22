@@ -77,7 +77,7 @@ const UpdateUser = UserFormSchema.omit({ id: true }).extend({ password: z.string
     .regex(/[A-Z]/, { message: 'Must contain at least one uppercase letter' })
     .regex(/[0-9]/, { message: 'Must contain at least one number' })
     .regex(/[!@#$%^&*]/, { message: 'Must contain at least one special character' })
-    .optional()
+    .optional().or(z.literal(''))
 });
 
 export async function updateUser(id: string, prevState: UserState, formData: FormData) {
@@ -103,11 +103,10 @@ export async function updateUser(id: string, prevState: UserState, formData: For
     `;
 
     let hashedPassword;
-
-    if(currentUser[0].password == password) {
-       hashedPassword = password;
-    } else {
+    if (password && password.trim().length > 0) {
         hashedPassword = await bcryptjs.hash(password, 10);
+    } else {
+        hashedPassword = currentUser[0].password;
     }
 
     try {
